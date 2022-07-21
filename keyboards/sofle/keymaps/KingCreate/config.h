@@ -5,6 +5,8 @@ see https://docs.qmk.fm/#/feature_split_keyboard?id=setting-handedness
 for more options.
 */
 #undef TAPPING_TERM
-#define TAPPING_TERM 300
+#undef DEBOUNCE
 #define TAPPING_FORCE_HOLD
 #define IGNORE_MOD_TAP_INTERRUPT
+#define TAPPING_TERM 250
+#define DEBOUNCE 12
