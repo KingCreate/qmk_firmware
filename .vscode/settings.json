@@ -10,7 +10,6 @@
         "**/*.uf2": true
     },
     "files.associations": {
-        "*.bas": "vb",
         // QMK Filetypes
         "keyboard.json": "jsonc",
         "info.json": "jsonc",
