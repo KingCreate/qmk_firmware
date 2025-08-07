@@ -17,15 +17,11 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <stdint.h>
-#include <stdbool.h>
-#include <string.h>
-#include "quantum.h"
 #include "matrix.h"
 #include "tca6424.h"
 #include "abelx.h"
 
-static const uint16_t col_pins[MATRIX_COLS] = MATRIX_COL_PINS;
+static const uint16_t col_pins[MATRIX_COLS] = CUSTOM_MATRIX_COL_PINS;
 
 void matrix_init_custom(void)
 {
