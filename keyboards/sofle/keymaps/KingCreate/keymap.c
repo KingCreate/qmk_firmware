@@ -36,13 +36,9 @@ enum Mode {
 };
 
 static enum Mode cur_mode = ARROW;
-static const uint16_t TOGGLE_KEY = KC_MHEN;
 
-// Tap Dance definitions
-qk_tap_dance_action_t tap_dance_actions[] = {
-    // Tap once for Escape, twice for Caps Lock
-    [TD_idk] = ACTION_TAP_DANCE_LAYER_TOGGLE(KC_A, _NAV),
-};
+// Tap Dance definitions - minimal required array
+tap_dance_action_t tap_dance_actions[] = {};
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /*
@@ -65,7 +61,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_GRV,   KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                      KC_6,    KC_7,    KC_8,    KC_9,    KC_0,  KC_MINS, \
         KC_LBRC,   KC_Q,   KC_W,    KC_F,    KC_P,    KC_B,                      KC_J,    KC_L,    KC_U,    KC_Y, KC_SCLN,  KC_EQL, \
         KC_RBRC,   MT(MOD_LGUI,KC_A), MT(MOD_LALT,KC_R), MT(MOD_LCTL,KC_S), MT(MOD_LSFT,KC_T), MT(MOD_MEH,KC_G), MT(MOD_HYPR,KC_M), MT(MOD_RSFT,KC_N), MT(MOD_RCTL,KC_E), MT(MOD_RALT, KC_I), MT(MOD_RGUI,KC_O),  KC_QUOT, \
-        KC_BSLS,  KC_Z,   KC_X,    KC_C,    KC_D,    KC_V, KC_MHEN,      XXXXXXX,KC_K,    KC_H, KC_COMM,  KC_DOT, KC_SLSH,  KC_APP, \
+        KC_BSLS,  KC_Z,   KC_X,    KC_C,    KC_D,    KC_V, KC_MUTE,      XXXXXXX,KC_K,    KC_H, KC_COMM,  KC_DOT, KC_SLSH,  KC_APP, \
                         KC_HOME,KC_HOME,KC_ESC,KC_SPC, LT(_LOWER,KC_TAB),      KC_ENT,  KC_BSPC, KC_DEL, KC_END, TG(_QWERTY)  \
     ),
     /*
@@ -172,7 +168,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     */
     [_TEST] = LAYOUT( \
         XXXXXXX , XXXXXXX,  XXXXXXX ,  XXXXXXX , XXXXXXX, XXXXXXX,                     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
-        RESET  , XXXXXXX,XXXXXXX,KC_COLEMAK,CG_TOGG,XXXXXXX,                     KC_1,    KC_2,    KC_3,    KC_4,    KC_5, XXXXXXX, \
+        QK_BOOT  , XXXXXXX,XXXXXXX,KC_COLEMAK,CG_TOGG,XXXXXXX,                     KC_1,    KC_2,    KC_3,    KC_4,    KC_5, XXXXXXX, \
         XXXXXXX , XXXXXXX,CG_TOGG, XXXXXXX,    XXXXXXX,  XXXXXXX,                     KC_6,    KC_7,    KC_8,    KC_9,    KC_0, XXXXXXX, \
         XXXXXXX , XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX,  XXXXXXX, XXXXXXX,     XXXXXXX, XXXXXXX, KC_MPRV, KC_MPLY, KC_MNXT, XXXXXXX, XXXXXXX, \
                         _______, _______, _______, _______, _______,     _______, _______, _______, _______, _______ \
@@ -295,7 +291,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 unregister_code(KC_BSPC);
             }
             break;
-        case TOGGLE_KEY:
+        case KC_MUTE:
             if (record->event.pressed) {
                 cur_mode = (cur_mode + 1) % _NUM_MODES;
             }

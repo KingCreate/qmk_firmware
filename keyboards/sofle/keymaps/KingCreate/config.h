@@ -7,6 +7,5 @@ for more options.
 #undef TAPPING_TERM
 #undef DEBOUNCE
 #define TAPPING_FORCE_HOLD
-#define IGNORE_MOD_TAP_INTERRUPT
 #define TAPPING_TERM 250
 #define DEBOUNCE 12
